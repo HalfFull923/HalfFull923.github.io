@@ -23,7 +23,7 @@
 				pause_hover: 0,
 				slide_counter: 1,
 				slide_captions: 1,
-				slide_interval: 2000,
+				slide_interval: 5000,
 				slides : [
 					{image : 'slides/slide-1.jpg'},
 					{image : 'slides/slide-2.jpg'},
@@ -120,7 +120,7 @@
 
 	<script>
 
-	var countDownDate = new Date("Jun 5, 2020 15:37:25").getTime();
+	var countDownDate = new Date("May 18, 2020 16:00:00").getTime();
 
 	// Update the count down every 1 second
 	var x = setInterval(function() {
@@ -132,24 +132,27 @@
 		var distance = countDownDate - now;
 
 		// Time calculations for days, hours, minutes and seconds
-		// var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-		// var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-		// var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-		//var seconds = Math.floor((distance) / 1000);
+		var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+		var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+		var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+		var seconds = Math.floor((distance) % (1000 * 60))/ (1000);
+		seconds = (Math.round(seconds *100)/100).toFixed(2);
 		//var milisecs = Math.floor((distance % 1000))
 
 		// Display the result in the element with id="demo"
 		// document.getElementById("demo").innerHTML = days + "d " + hours + "h "
 		//   + minutes + "m " + seconds + "s ";
 
-		document.getElementById("countdowner").innerHTML = distance;
+		//document.getElementById("countdowner").innerHTML = distance;
+
+		document.getElementById("countdowner").innerHTML = days + "d " + hours + "h " + minutes + "m " + seconds + "s";
 
 		// If the count down is finished, write some text 
 		if (distance < 0) {
 			clearInterval(x);
 		    document.getElementById("countdowner").innerHTML = "Tada!";
 		  }
-	}, 11);
+	}, 100);
 
 	</script>
 <!--
